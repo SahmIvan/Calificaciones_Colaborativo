@@ -1,0 +1,21 @@
+{
+    "users": [
+        { "username": "admin", "password": "1234" }
+    ],
+    "students": [
+        { "id": 1, "name": "Juan Pérez" },
+        { "id": 2, "name": "María Gómez" }
+    ],
+    "subjects": [
+        { "id": 1, "name": "Matemáticas" },
+        { "id": 2, "name": "Historia" }
+    ],
+    "enrollments": [
+        { "studentName": "Juan Pérez", "subjectName": "Matemáticas" },
+        { "studentName": "María Gómez", "subjectName": "Historia" }
+    ],
+    "grades": [
+        { "studentName": "Juan Pérez", "subjectName": "Matemáticas", "grade": 90 },
+        { "studentName": "María Gómez", "subjectName": "Historia", "grade": 85 }
+    ]
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDUNOTE</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+
+<body class="afacad-medium">
+  <div class="justify-content-center align-items-center" id="login">
+    <div
+      class="container rounded-5 login w-25 d-flex flex-column align-items-center justify-content-center gap-4 shadow-2 p-3">
+      <h2 class="">EDUNOTE</h2>
+      <input class="border border-dark rounded-3" type="text" id="username" placeholder="Usuario" />
+      <input class="border border-dark rounded-3" type="password" id="password" placeholder="Contraseña" />
+      <button class="rounded-3 px-3 py-2 btn-login" onclick="login()">Iniciar sesión</button>
+    </div>
+
+  </div>
+
+  <div class="container-fluid" id="dashboard" style="display:none;">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar text-black afacad-ligth">
+        <h2 class="text-white">EDUNOTE</h2>
+        <a onclick="showStudents()">Alumnos</a>
+        <a onclick="showSubjects()">Materias</a>
+        <a onclick="showEnrollments()">Inscripciones</a>
+        <a onclick="showGrades()">Capturar Calificaciones</a>
+        <a onclick="logout()">Cerrar sesión</a>
+      </div>
+
+      <!-- Main content -->
+      <div class="col-md-10 main-content">
+        <div id="students" style="display:none;">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="display-3">ALUMNOS</h3>
+            <button class="rounded-3 px-3 py-2 btn-save" onclick="showStudentForm()">Agregar Alumno</button>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <table class="table table-bordered rounded-5" id="studentsTable">
+                <thead>
+                  <tr class="text-center fs-5">
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>OPCIONES</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider"></tbody>
+              </table>
+            </div>
+            <div class="col-md-5">
+              <!-- Formulario de agregar/editar alumno -->
+              <div style="display:none;" id="studentForm"
+                class="p-3 bg-light shadow d-flex flex-column gap-3 form-style">
+                <h3>Agregar/Editar Alumno</h3>
+                <label id="Id" for="id" style="display: none;">ID</label>
+                <input type="hidden" id="studentId" readonly/>
+                <label for="name">Nombre del alumno</label>
+                <input type="text" id="studentName" placeholder="Nombre del Alumno" />
+                <div class="col-md-12 d-flex justify-content-end gap-2">
+                  <button type="button" class="btn-cancel rounded-4" onclick="cancelStudentForm()">Cancelar</button>
+                  <button type="submit" class="btn-save rounded-4" onclick="saveStudent(event)">Guardar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div id="subjects" style="display:none;">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="display-3">Materias</h3>
+            <button class="rounded-3 px-3 py-2 btn-save" onclick="showSubjectForm()">Agregar Materia</button>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <table class="table table-bordered rounded-5" id="subjectsTable">
+                <thead>
+                  <tr class="text-center fs-5">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider"></tbody>
+              </table>
+            </div>
+            <div class="col-md-5">
+              <!-- Formulario de agregar/editar materia -->
+              <form id="subjectForm" style="display:none;"
+                class="p-3 bg-light shadow d-flex flex-column gap-3 form-style">
+                <h3>Agregar/Editar Materia</h3>
+                <label style="display: none;" id="IdSub" for="ID">ID</label>
+                <input type="hidden" id="subjectId" readonly/>
+                <label for="subjectName">Nombre de la materia</label>
+                <input type="text" id="subjectName" placeholder="Nombre de la Materia" />
+                <div class="col-md-12 d-flex justify-content-end gap-2">
+                  <button type="button" class="btn-cancel rounded-4" onclick="cancelSubjectForm()">Cancelar</button>
+                  <button type="submit" class="btn-save rounded-4" onclick="saveSubject(event)">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="enrollments" style="display:none;">
+          <div>
+            <h3 class="display-3">INSCRIPCIONES A MATERIAS</h3>
+          </div>
+          <div class="row justify-content-between align-items-center mb-3">
+            <div class="col-md-4 d-flex flex-column">
+              <label for="">Alumno</label>
+              <select class="select" id="studentSelect"></select>
+            </div>
+            <div class="col-md-4 d-flex flex-column">
+              <label for="">Materia</label>
+              <select class="select" id="subjectSelect"></select>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end align-items-bottom">
+              <button type="button" class="btn-save rounded-4" onclick="enrollStudent()">Inscribir</button>
+            </div>
+            
+          </div>
+
+          <h4>Inscripciones</h4>
+          <table class="table table-bordered rounded-5" id="enrollmentsTable">
+            <thead class="text-center fs-5">
+              <tr>
+                <th>Alumno</th>
+                <th>Materia</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider"></tbody>
+          </table>
+        </div>
+
+        <div id="grades" style="display:none;">
+          <h3 class="display-3">CALIFICACIONES</h3>
+          <div class="row justify-content-between align-items-center mb-3">
+            <div class="col-md-4 d-flex flex-column">
+              <label for="enrollmentSelect">Inscripción</label>
+              <select class="select" id="enrollmentSelect"></select>
+            </div>
+            <div class="col-md-4 d-flex flex-column">
+              <label for="gradeInput">Calificación</label>
+              <input max="100" min="0" class="select" type="number" id="gradeInput" placeholder="Calificación" />
+            </div>
+            <div class="col-md-4 d-flex justify-content-end align-items-bottom">
+              <button type="button" class="btn-save rounded-4 onclick="captureGrade()">Capturar</button>
+            </div>
+          </div>
+          <h4>Calificaciones</h4>
+          <table id="gradesTable">
+            <thead>
+              <tr>
+                <th>Alumno</th>
+                <th>Materia</th>
+                <th>Calificación</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider"></tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

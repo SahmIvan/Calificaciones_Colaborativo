@@ -25,6 +25,3 @@
 - Control de versiones con **Git y GitHub**
 
 ---
-
-## 📁 Estructura del proyecto
-

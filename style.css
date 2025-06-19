@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+
+.afacad-medium {
+  font-family: "Afacad", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.afacad-ligth {
+  font-family: "Afacad", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  padding: 20px;
+  background-color: #F2F2F2;
+}
+
+button {
+  margin: 10px;
+}
+
+input {
+  margin: 10px;
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+.login {
+  margin: 20px;
+  padding: 20px;
+  background-color: #BF5934;
+  color: white;
+}
+
+.btn-login {
+  background-color: #1B2A41;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-save {
+  background-color: #BF5934;
+  color: white;
+  font-size: large;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  color: #BF5934;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  font-size: large;
+}
+
+.btn-delete {
+  color: #CA537D;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  font-size: large;
+}
+.btn-cancel{
+  background-color: #1B2A41;
+  color: white;
+  font-size: large;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.sidebar {
+  background-color: #7A9EA3;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+.sidebar h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sidebar a {
+  display: block;
+  color: #142d4c;
+  font-size: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid white;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.main-content {
+  padding: 30px;
+}
+
+.dashboard-title {
+  color: #a1a1a1;
+  font-weight: 500;
+  font-size: 20px;
+}
+.form-style{
+  border: 2px solid #7A9EA3;
+}
+.form-style input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 2px solid #7A9EA3;
+}
+.select{
+  padding: 10px;
+  border: 2px solid #7A9EA3;
+  width: 100%;
+  margin: 5px 0;
+}
